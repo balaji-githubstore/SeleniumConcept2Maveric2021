@@ -6,7 +6,6 @@ using OpenQA.Selenium.Support.UI;
 using System;
 using System.Collections.ObjectModel;
 using System.Threading;
-
 namespace SeleniumConcepts2
 {
     class Demo16DynamicPage

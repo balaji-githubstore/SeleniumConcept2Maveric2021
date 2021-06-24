@@ -30,7 +30,7 @@ namespace SeleniumConcepts2
             Thread.Sleep(2000);
             driver.FindElement(By.XPath("//span[text()='AC 2 Tier (2A)']")).Click();
 
-            Thread.Sleep(5000);
+            Thread.Sleep(10000);
             driver.Quit();
         }
     }
