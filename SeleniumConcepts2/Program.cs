@@ -13,6 +13,7 @@ namespace SeleniumConcepts2
     {
         static void Main(string[] args)
         {
+            //Balaji
             ChromeOptions option = new ChromeOptions();
             option.AddArgument("--disable-notifications");
 
