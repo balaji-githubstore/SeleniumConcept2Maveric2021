@@ -9,7 +9,7 @@ namespace SeleniumConcepts2
 {
     class OpenEMR
     {
-        static void Main3(string[] args)
+        static void Main11(string[] args)
         {
             IWebDriver driver = new ChromeDriver();
             driver.Manage().Window.Maximize();
@@ -17,13 +17,13 @@ namespace SeleniumConcepts2
 
             driver.Url = "http://demo.openemr.io/b/openemr/interface/login/login.php?site=default";
 
-            driver.FindElement(By.Id("authUser")).SendKeys("admin");
-            driver.FindElement(By.Id("clearPass")).SendKeys("pass");
+            driver.FindElement(By.CssSelector("#authUser")).SendKeys("admin");
+            driver.FindElement(By.CssSelector("#clearPass")).SendKeys("pass");
 
-            SelectElement select = new SelectElement(driver.FindElement(By.Name("languageChoice")));
+            SelectElement select = new SelectElement(driver.FindElement(By.CssSelector("[name='languageChoice']")));
             select.SelectByText("English (Indian)");
 
-            driver.FindElement(By.XPath("//button[@type='submit']")).Click();
+            driver.FindElement(By.CssSelector("[type='submit']")).Click();
 
             //wait for page load completes //explicit wait
             //print the title

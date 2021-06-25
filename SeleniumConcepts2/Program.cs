@@ -13,26 +13,32 @@ namespace SeleniumConcepts2
     {
         static void Main(string[] args)
         {
-            //Balaji
-            ChromeOptions option = new ChromeOptions();
-            option.AddArgument("--disable-notifications");
 
-            IWebDriver driver = new ChromeDriver(option);
+            IWebDriver driver = new ChromeDriver();
             driver.Manage().Window.Maximize();
-            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(30);
-            driver.Url = "https://www.irctc.co.in/nget/train-search";
+            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(20);
 
-            driver.FindElement(By.XPath("//button[text()='OK']")).Click();
-            driver.FindElement(By.XPath("//input[@role='searchbox']")).SendKeys("chenn");
-            Thread.Sleep(2000);
-            driver.FindElement(By.XPath("//span[text()='CHENNAI EGMORE - MS']")).Click();
+            driver.Url = "http://demo.openemr.io/b/openemr/interface/login/login.php?site=default";
 
-            driver.FindElement(By.XPath("//span[text()='All Classes']")).Click();
-            Thread.Sleep(2000);
-            driver.FindElement(By.XPath("//span[text()='AC 2 Tier (2A)']")).Click();
+            driver.FindElement(By.CssSelector("#authUser")).SendKeys("admin");
+            driver.FindElement(By.CssSelector("#clearPass")).SendKeys("pass");
 
-            Thread.Sleep(10000);
-            driver.Quit();
+            SelectElement select = new SelectElement(driver.FindElement(By.CssSelector("[name='languageChoice']")));
+            select.SelectByText("English (Indian)");
+
+            driver.FindElement(By.CssSelector("[type='submit']")).Click();
+
+            String actualTitle = driver.Title;
+            Console.WriteLine(actualTitle);
+
+            //click on logout //presence and visible 
+            //driver.FindElement(By.XPath("//li[text()='Logout']")).Click();
+
+            IJavaScriptExecutor js = (IJavaScriptExecutor)driver; //casting
+            js.ExecuteScript("arguments[0].click()", driver.FindElement(By.XPath("//li[text()='Logout']")));
+
+            //js.ExecuteScript("arguments[0].scrollIntoView()", driver.FindElement(By.XPath("//li[text()='Logout']")));
+
         }
     }
 }
