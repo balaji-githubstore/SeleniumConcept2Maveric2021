@@ -11,8 +11,18 @@ namespace SeleniumConcepts2
 {
     class Program
     {
-        static void Main(string[] args)
+        static void Main11(string[] args)
         {
+
+            /*String sal1 = "$200,220,000";
+            String sal2 = "$200,220,000";
+
+            sal1 = sal1.Replace("$", "").Replace(",", "");
+
+            int s1 = Convert.ToInt32(sal1);
+
+            Console.WriteLine(s1+ s1);*/
+
 
             IWebDriver driver = new ChromeDriver();
             driver.Manage().Window.Maximize();
@@ -38,6 +48,7 @@ namespace SeleniumConcepts2
             js.ExecuteScript("arguments[0].click()", driver.FindElement(By.XPath("//li[text()='Logout']")));
 
             //js.ExecuteScript("arguments[0].scrollIntoView()", driver.FindElement(By.XPath("//li[text()='Logout']")));
+
 
         }
     }
